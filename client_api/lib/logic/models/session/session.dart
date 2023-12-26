@@ -18,4 +18,16 @@ class Session {
       _$SessionFromJson(json);
 
   Map<String, dynamic> toJson() => _$SessionToJson(this);
+
+  Session copyWith({
+    int? id,
+    int? studentId,
+    int? subjectId,
+  }) {
+    return Session(
+      id: id ?? this.id,
+      studentId: studentId ?? this.studentId,
+      subjectId: subjectId ?? this.subjectId,
+    );
+  }
 }

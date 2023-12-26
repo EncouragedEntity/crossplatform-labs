@@ -18,4 +18,16 @@ class Student {
       _$StudentFromJson(json);
 
   Map<String, dynamic> toJson() => _$StudentToJson(this);
+
+  Student copyWith({
+    int? id,
+    String? firstName,
+    String? lastName,
+  }) {
+    return Student(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+    );
+  }
 }

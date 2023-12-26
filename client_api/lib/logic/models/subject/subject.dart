@@ -16,4 +16,14 @@ class Subject {
       _$SubjectFromJson(json);
 
   Map<String, dynamic> toJson() => _$SubjectToJson(this);
+
+  Subject copyWith({
+    int? id,
+    String? name,
+  }) {
+    return Subject(
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
+  }
 }
