@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:web_client_api/data/constants/string_constants.dart';
-import 'package:web_client_api/data/providers/data_provider.dart';
 import 'package:web_client_api/logic/models/subject/subject.dart';
+
+import 'data_provider.dart';
 
 class SubjectProvider extends DataProvider<Subject> {
   final String link = "${hostname}subjects";
