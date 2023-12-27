@@ -15,11 +15,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   SortingValue _sortingValue = SortingValue.asc;
-  TextEditingController _searchController = TextEditingController();
   final List<Widget> _pages = [
-    StudentPage(),
-    SubjectPage(),
-    SessionPage(),
+    const StudentPage(),
+    const SubjectPage(),
+    const SessionPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -34,18 +33,27 @@ class _HomePageState extends State<HomePage> {
           ? SortingValue.desc
           : SortingValue.asc;
     });
-    // TODO: Implement sorting logic for the current page/repository
+
+    _pages[_currentIndex] =
+        _updatePageSorting(_pages[_currentIndex], _sortingValue);
   }
 
-  void _onSearchChanged(String value) {
-    // TODO: Implement search logic for the current page/repository
+  Widget _updatePageSorting(Widget page, SortingValue sortingValue) {
+    if (page is StudentPage) {
+      return StudentPage(sortingValue: sortingValue);
+    } else if (page is SubjectPage) {
+      return SubjectPage(sortingValue: sortingValue);
+    } else if (page is SessionPage) {
+      return SessionPage(sortingValue: sortingValue);
+    }
+    return page;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Students api client'),
+        title: const Text('Students API Client'),
         actions: [
           IconButton(
             icon: const Icon(Icons.sort),

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:web_client_api/data/providers/session_provider.dart';
 import 'package:web_client_api/logic/models/session/session.dart';
-
-import '../../../data/repositories/session_repository.dart';
+import 'package:web_client_api/logic/models/sorting_value.dart';
 
 class SessionPage extends StatefulWidget {
-  const SessionPage({Key? key}) : super(key: key);
+  const SessionPage({super.key, this.sortingValue = SortingValue.asc});
 
+  final SortingValue sortingValue;
   @override
   State<SessionPage> createState() => _SessionPageState();
 }
 
 class _SessionPageState extends State<SessionPage> {
-  final SessionRepository _repository = SessionRepository();
+  final _repository = SessionProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class _SessionPageState extends State<SessionPage> {
         title: const Text('Sessions'),
       ),
       body: FutureBuilder<List<Session>?>(
-        future: _repository.getAll(),
+        future: _repository.getAll(sortingInput: widget.sortingValue),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());

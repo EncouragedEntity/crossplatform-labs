@@ -5,6 +5,8 @@ import 'package:web_client_api/data/constants/string_constants.dart';
 import 'package:web_client_api/data/providers/data_provider.dart';
 import 'package:web_client_api/logic/models/session/session.dart';
 
+import '../../logic/models/sorting_value.dart';
+
 class SessionProvider extends DataProvider<Session> {
   final String link = "${hostname}sessions";
 
@@ -37,8 +39,19 @@ class SessionProvider extends DataProvider<Session> {
   }
 
   @override
-  Future<List<Session>?> getAll() async {
-    final response = await http.get(Uri.parse(link));
+  Future<List<Session>?> getAll({
+    String? searchInput,
+    SortingValue? sortingInput,
+  }) async {
+    final Map<String, String> queryParams = {};
+    if (sortingInput != null) {
+      queryParams['_sort'] = 'subjectId';
+      queryParams['_order'] = sortingInput == SortingValue.asc ? 'asc' : 'desc';
+    }
+
+    final Uri uri = Uri.parse(link).replace(queryParameters: queryParams);
+
+    final response = await http.get(uri);
 
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);

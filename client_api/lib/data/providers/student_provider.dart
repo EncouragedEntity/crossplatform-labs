@@ -5,6 +5,8 @@ import 'package:web_client_api/data/providers/data_provider.dart';
 import 'package:web_client_api/logic/models/student/student.dart';
 import 'package:http/http.dart' as http;
 
+import '../../logic/models/sorting_value.dart';
+
 class StudentProvider extends DataProvider<Student> {
   final String link = "${hostname}students";
 
@@ -37,8 +39,24 @@ class StudentProvider extends DataProvider<Student> {
   }
 
   @override
-  Future<List<Student>?> getAll() async {
-    final response = await http.get(Uri.parse(link));
+  Future<List<Student>?> getAll({
+    String? searchInput,
+    SortingValue? sortingInput,
+  }) async {
+    final Map<String, String> queryParams = {};
+
+    if (sortingInput != null) {
+      queryParams['_sort'] = 'firstName';
+      queryParams['_order'] = sortingInput == SortingValue.asc ? 'asc' : 'desc';
+    }
+
+    if (searchInput != null && searchInput.isNotEmpty) {
+      queryParams['firstName_like'] = searchInput;
+    }
+
+    final Uri uri = Uri.parse(link).replace(queryParameters: queryParams);
+
+    final response = await http.get(uri);
 
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
