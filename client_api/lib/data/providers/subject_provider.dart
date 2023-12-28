@@ -10,6 +10,8 @@ import 'data_provider.dart';
 class SubjectProvider extends DataProvider<Subject> {
   final String link = "${hostname}subjects";
 
+  const SubjectProvider();
+
   @override
   Future<Subject?> create(Subject data) async {
     final response = await http.post(

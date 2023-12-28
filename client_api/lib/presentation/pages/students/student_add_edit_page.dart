@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:web_client_api/logic/models/student/student.dart';
 
+import '../../../data/providers/student_provider.dart';
+
 class StudentAddEditPage extends StatefulWidget {
   const StudentAddEditPage({Key? key, this.studentToEdit}) : super(key: key);
 
@@ -14,6 +16,7 @@ class StudentAddEditPage extends StatefulWidget {
 class _StudentAddEditPageState extends State<StudentAddEditPage> {
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
+  final _repository = const StudentProvider();
 
   @override
   void initState() {
@@ -46,22 +49,22 @@ class _StudentAddEditPageState extends State<StudentAddEditPage> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                // TODO: Implement save functionality
+              onPressed: () async {
                 if (widget.studentToEdit == null) {
                   final newStudent = Student(
                     firstName: _firstNameController.text,
                     lastName: _lastNameController.text,
                   );
-                  // TODO: Save new student to the repository
+                  await _repository.create(newStudent);
                 } else {
                   final updatedStudent = widget.studentToEdit!.copyWith(
                     firstName: _firstNameController.text,
                     lastName: _lastNameController.text,
                   );
-                  // TODO: Save updated student to the repository
+                  await _repository.update(updatedStudent.id!, updatedStudent);
                 }
-                // TODO: Navigate back or perform other actions after saving
+                // ignore: use_build_context_synchronously
+                Navigator.of(context).pop();
               },
               child:
                   Text(widget.studentToEdit == null ? 'Add' : 'Save Changes'),

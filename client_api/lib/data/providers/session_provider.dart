@@ -9,6 +9,7 @@ import '../../logic/models/sorting_value.dart';
 
 class SessionProvider extends DataProvider<Session> {
   final String link = "${hostname}sessions";
+  const SessionProvider();
 
   @override
   Future<Session?> create(Session data) async {

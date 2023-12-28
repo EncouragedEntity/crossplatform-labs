@@ -10,6 +10,8 @@ import '../../logic/models/sorting_value.dart';
 class StudentProvider extends DataProvider<Student> {
   final String link = "${hostname}students";
 
+  const StudentProvider();
+
   @override
   Future<Student?> create(Student data) async {
     final response = await http.post(

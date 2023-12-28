@@ -1,6 +1,8 @@
 import '../../logic/models/sorting_value.dart';
 
 abstract class DataProvider<T> {
+  const DataProvider();
+
   Future<List<T>?> getAll({
     String? searchInput,
     SortingValue? sortingInput,
