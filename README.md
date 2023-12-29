@@ -4,6 +4,6 @@
 - [Перша](json-api/)
 - [Друга](client_api/)
 - [Четверта](client_api/)
-- [Шоста](client_api/)
+- [Шоста](mobile_api_client/)
 
 Далі буде...
