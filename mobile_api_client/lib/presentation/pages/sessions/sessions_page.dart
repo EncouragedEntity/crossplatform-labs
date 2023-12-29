@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/session_provider.dart';
-import 'package:web_client_api/logic/models/session/session.dart';
-import 'package:web_client_api/logic/models/sorting_value.dart';
-import 'package:web_client_api/presentation/pages/sessions/session_add_edit_page.dart';
-import 'package:web_client_api/presentation/widgets/my_session_dialog.dart';
+
+import '../../../data/providers/session_provider.dart';
+import '../../../logic/models/session/session.dart';
+import '../../../logic/models/sorting_value.dart';
+import '../../widgets/my_session_dialog.dart';
+import 'session_add_edit_page.dart';
 
 class SessionPage extends StatefulWidget {
   const SessionPage({super.key, this.sortingValue = SortingValue.asc});

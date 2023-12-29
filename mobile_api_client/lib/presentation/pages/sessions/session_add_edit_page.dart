@@ -1,12 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/session_provider.dart';
-import 'package:web_client_api/data/providers/student_provider.dart';
-import 'package:web_client_api/data/providers/subject_provider.dart';
-import 'package:web_client_api/logic/models/session/session.dart';
-import 'package:web_client_api/logic/models/student/student.dart';
-import 'package:web_client_api/logic/models/subject/subject.dart';
+
+import '../../../data/providers/session_provider.dart';
+import '../../../data/providers/student_provider.dart';
+import '../../../data/providers/subject_provider.dart';
+import '../../../logic/models/session/session.dart';
+import '../../../logic/models/student/student.dart';
+import '../../../logic/models/subject/subject.dart';
 
 class SessionAddEditPage extends StatefulWidget {
   const SessionAddEditPage({Key? key, this.sessionToEdit}) : super(key: key);

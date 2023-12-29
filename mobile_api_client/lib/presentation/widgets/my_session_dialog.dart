@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/session_provider.dart';
-import 'package:web_client_api/data/providers/student_provider.dart';
-import 'package:web_client_api/data/providers/subject_provider.dart';
-import 'package:web_client_api/logic/models/session/session.dart';
-import 'package:web_client_api/logic/models/student/student.dart';
-import 'package:web_client_api/logic/models/subject/subject.dart';
+
+import '../../data/providers/session_provider.dart';
+import '../../data/providers/student_provider.dart';
+import '../../data/providers/subject_provider.dart';
+import '../../logic/models/session/session.dart';
+import '../../logic/models/student/student.dart';
+import '../../logic/models/subject/subject.dart';
 
 class MySessionDialog extends StatefulWidget {
   const MySessionDialog({Key? key, required this.id}) : super(key: key);

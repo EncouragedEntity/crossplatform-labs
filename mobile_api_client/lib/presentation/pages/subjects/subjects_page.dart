@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/subject_provider.dart';
-import 'package:web_client_api/logic/models/sorting_value.dart';
-import 'package:web_client_api/logic/models/subject/subject.dart';
-import 'package:web_client_api/presentation/pages/subjects/subject_add_edit_page.dart';
-import 'package:web_client_api/presentation/widgets/my_search_bar.dart';
 
+import '../../../data/providers/subject_provider.dart';
+import '../../../logic/models/sorting_value.dart';
+import '../../../logic/models/subject/subject.dart';
+import '../../widgets/my_search_bar.dart';
 import '../../widgets/my_subject_dialog.dart';
+import 'subject_add_edit_page.dart';
 
 class SubjectPage extends StatefulWidget {
   const SubjectPage({Key? key, this.sortingValue = SortingValue.asc})

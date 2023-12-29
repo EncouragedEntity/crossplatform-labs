@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/student_provider.dart';
 
+import '../../data/providers/student_provider.dart';
 import '../../logic/models/student/student.dart';
 
 class MyStudentDialog extends StatefulWidget {

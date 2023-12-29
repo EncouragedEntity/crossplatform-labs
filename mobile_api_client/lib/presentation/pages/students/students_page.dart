@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/student_provider.dart';
-import 'package:web_client_api/logic/models/sorting_value.dart';
-import 'package:web_client_api/logic/models/student/student.dart';
-import 'package:web_client_api/presentation/pages/students/student_add_edit_page.dart';
 
+import '../../../data/providers/student_provider.dart';
+import '../../../logic/models/sorting_value.dart';
+import '../../../logic/models/student/student.dart';
 import '../../widgets/my_search_bar.dart';
 import '../../widgets/my_student_dialog.dart';
+import 'student_add_edit_page.dart';
 
 class StudentPage extends StatefulWidget {
   const StudentPage({super.key, this.sortingValue = SortingValue.asc});

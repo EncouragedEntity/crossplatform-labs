@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:web_client_api/data/constants/string_constants.dart';
-import 'package:web_client_api/data/providers/data_provider.dart';
-import 'package:web_client_api/logic/models/student/student.dart';
 import 'package:http/http.dart' as http;
 
 import '../../logic/models/sorting_value.dart';
+import '../../logic/models/student/student.dart';
+import '../constants/string_constants.dart';
+import 'data_provider.dart';
 
 class StudentProvider implements DataProvider<Student> {
   final String link = "${hostname}students";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_client_api/data/providers/subject_provider.dart';
 
+import '../../data/providers/subject_provider.dart';
 import '../../logic/models/subject/subject.dart';
 
 class MySubjectDialog extends StatefulWidget {

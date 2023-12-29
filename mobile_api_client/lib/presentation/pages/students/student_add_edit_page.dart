@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:web_client_api/logic/models/student/student.dart';
 
 import '../../../data/providers/student_provider.dart';
+import '../../../logic/models/student/student.dart';
 
 class StudentAddEditPage extends StatefulWidget {
   const StudentAddEditPage({Key? key, this.studentToEdit}) : super(key: key);

@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:web_client_api/data/constants/string_constants.dart';
-import 'package:web_client_api/data/providers/data_provider.dart';
-import 'package:web_client_api/logic/models/session/session.dart';
 
+import '../../logic/models/session/session.dart';
 import '../../logic/models/sorting_value.dart';
+import '../constants/string_constants.dart';
+import 'data_provider.dart';
 
 class SessionProvider implements DataProvider<Session> {
   final String link = "${hostname}sessions";

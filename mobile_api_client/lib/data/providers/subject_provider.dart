@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:web_client_api/data/constants/string_constants.dart';
-import 'package:web_client_api/logic/models/subject/subject.dart';
 
 import '../../logic/models/sorting_value.dart';
+import '../../logic/models/subject/subject.dart';
+import '../constants/string_constants.dart';
 import 'data_provider.dart';
 
 class SubjectProvider implements DataProvider<Subject> {

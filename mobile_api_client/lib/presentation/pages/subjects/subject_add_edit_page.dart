@@ -1,8 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:web_client_api/logic/models/subject/subject.dart';
 import '../../../data/providers/subject_provider.dart';
+import '../../../logic/models/subject/subject.dart';
 
 class SubjectAddEditPage extends StatefulWidget {
   const SubjectAddEditPage({Key? key, this.subjectToEdit}) : super(key: key);
