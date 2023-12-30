@@ -8,7 +8,7 @@ import '../constants/string_constants.dart';
 import 'data_provider.dart';
 
 class StudentProvider implements DataProvider<Student> {
-  final String link = "${hostname}students";
+  final String link = "${mobileHostname}students";
 
   const StudentProvider();
 

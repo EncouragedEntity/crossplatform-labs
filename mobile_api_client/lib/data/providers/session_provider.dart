@@ -8,7 +8,7 @@ import '../constants/string_constants.dart';
 import 'data_provider.dart';
 
 class SessionProvider implements DataProvider<Session> {
-  final String link = "${hostname}sessions";
+  final String link = "${mobileHostname}sessions";
   const SessionProvider();
 
   @override
