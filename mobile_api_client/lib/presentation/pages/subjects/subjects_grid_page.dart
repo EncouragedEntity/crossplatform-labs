@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/providers/student_provider.dart';
+import '../../../data/providers/subject_provider.dart';
 import '../../../logic/models/sorting_value.dart';
-import '../../../logic/models/student/student.dart';
+import '../../../logic/models/subject/subject.dart';
 import '../../widgets/my_search_bar.dart';
-import '../../widgets/my_student_dialog.dart';
-import 'student_add_edit_page.dart';
+import '../../widgets/my_subject_dialog.dart';
+import 'subject_add_edit_page.dart';
 
-class StudentGridPage extends StatefulWidget {
-  const StudentGridPage({super.key, this.sortingValue = SortingValue.asc});
+class SubjectGridPage extends StatefulWidget {
+  const SubjectGridPage({Key? key, this.sortingValue = SortingValue.asc})
+      : super(key: key);
 
   final SortingValue sortingValue;
 
   @override
-  State<StudentGridPage> createState() => _StudentGridPageState();
+  State<SubjectGridPage> createState() => _SubjectGridPageState();
 }
 
-class _StudentGridPageState extends State<StudentGridPage> {
-  final _repository = const StudentProvider();
+class _SubjectGridPageState extends State<SubjectGridPage> {
+  final _repository = const SubjectProvider();
   final _searchController = TextEditingController();
   String _searchQuery = "";
 
@@ -33,39 +34,39 @@ class _StudentGridPageState extends State<StudentGridPage> {
                 _searchQuery = _searchController.text;
               });
             },
-            hintText: 'Student name...',
+            hintText: 'Subject name...',
           ),
-          Expanded(
-            child: FutureBuilder<List<Student>?>(
-              future: _repository.getAll(
-                sortingInput: widget.sortingValue,
-                searchInput: _searchQuery,
-              ),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return const Center(child: Text('No students found.'));
-                } else {
-                  List<Student> students = snapshot.data!;
-                  return GridView.builder(
+          FutureBuilder<List<Subject>?>(
+            future: _repository.getAll(
+              sortingInput: widget.sortingValue,
+              searchInput: _searchQuery,
+            ),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(child: Text('No subjects found.'));
+              } else {
+                List<Subject> subjects = snapshot.data!;
+                return Expanded(
+                  child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 8.0,
                       mainAxisSpacing: 8.0,
                     ),
-                    itemCount: students.length,
+                    itemCount: subjects.length,
                     itemBuilder: (context, index) {
-                      final item = students[index];
+                      final item = subjects[index];
 
                       return InkWell(
                         onTap: () {
                           showAdaptiveDialog(
                             context: context,
-                            builder: (context) => MyStudentDialog(id: item.id!),
+                            builder: (context) => MySubjectDialog(id: item.id!),
                           );
                         },
                         child: Card(
@@ -77,7 +78,7 @@ class _StudentGridPageState extends State<StudentGridPage> {
                                   textAlign: TextAlign.center),
                               const SizedBox(height: 8.0),
                               Text(
-                                '${item.firstName} ${item.lastName}',
+                                item.name,
                                 textAlign: TextAlign.center,
                               ),
                               Row(
@@ -88,11 +89,12 @@ class _StudentGridPageState extends State<StudentGridPage> {
                                     icon: const Icon(Icons.edit),
                                     onPressed: () async {
                                       final result = await Navigator.of(context)
-                                          .push<Student?>(
+                                          .push<Subject?>(
                                         MaterialPageRoute(
                                           builder: (ctx) {
-                                            return StudentAddEditPage(
-                                                studentToEdit: item);
+                                            return SubjectAddEditPage(
+                                              subjectToEdit: item,
+                                            );
                                           },
                                         ),
                                       );
@@ -103,7 +105,7 @@ class _StudentGridPageState extends State<StudentGridPage> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                'Student ${result.id} updated',
+                                                'Subject ${result.id} updated',
                                               ),
                                             ),
                                           );
@@ -136,27 +138,25 @@ class _StudentGridPageState extends State<StudentGridPage> {
                         ),
                       );
                     },
-                  );
-                }
-              },
-            ),
+                  ),
+                );
+              }
+            },
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          final result = await Navigator.of(context).push<Student?>(
+          final result = await Navigator.of(context).push<Subject?>(
             MaterialPageRoute(
-              builder: (context) => const StudentAddEditPage(),
+              builder: (context) => const SubjectAddEditPage(),
             ),
           );
 
           setState(() {
             if (result != null) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(
-                    'Student ${result.firstName} ${result.lastName} created'),
-              ));
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Subject ${result.name} created')));
             }
           });
         },
