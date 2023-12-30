@@ -24,7 +24,7 @@ class _MyStudentDialogState extends State<MyStudentDialog> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
         ),
-        constraints: const BoxConstraints.tightFor(width: 200, height: 150),
+        constraints: const BoxConstraints.tightFor(width: 200, height: 170),
         child: FutureBuilder(
           future: _repository.getById(widget.id),
           builder: (context, AsyncSnapshot<Student?> snapshot) {

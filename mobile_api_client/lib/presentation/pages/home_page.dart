@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../logic/models/sorting_value.dart';
 import 'sessions/sessions_page.dart';
-import 'students/students_page.dart';
+import 'students/students_grid_page.dart';
 import 'subjects/subjects_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   SortingValue _sortingValue = SortingValue.asc;
   final List<Widget> _pages = [
-    const StudentPage(),
+    const StudentGridPage(),
     const SubjectPage(),
     const SessionPage(),
   ];
@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _updatePageSorting(Widget page, SortingValue sortingValue) {
-    if (page is StudentPage) {
-      return StudentPage(sortingValue: sortingValue);
+    if (page is StudentGridPage) {
+      return StudentGridPage(sortingValue: sortingValue);
     } else if (page is SubjectPage) {
       return SubjectPage(sortingValue: sortingValue);
     } else if (page is SessionPage) {
