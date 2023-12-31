@@ -1,19 +1,19 @@
 {
   "students": [
     {
-      "firstName": "New",
-      "lastName": "Student",
-      "id": 1
-    },
-    {
       "firstName": "Patrick",
       "lastName": "Student",
       "id": 2
     },
     {
+      "id": 3,
       "firstName": "Bob",
-      "lastName": "Pants",
-      "id": 3
+      "lastName": "Pant"
+    },
+    {
+      "id": 4,
+      "firstName": "Artur",
+      "lastName": "Nitsevich"
     }
   ],
   "subjects": [
@@ -39,11 +39,6 @@
       "id": 1,
       "studentId": 3,
       "subjectId": 1
-    },
-    {
-      "id": 2,
-      "studentId": 1,
-      "subjectId": 2
     },
     {
       "id": 3,
