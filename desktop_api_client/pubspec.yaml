@@ -40,6 +40,7 @@ dependencies:
   json_serializable: ^6.7.1
   build_runner: ^2.4.7
   logger: ^2.0.2+1
+  image_picker: ^1.0.5
   
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,10 @@
-// ignore_for_file: use_build_context_synchronously
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:web_client_api/logic/models/student/student.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../data/providers/student_provider.dart';
+import '../../../logic/models/student/student.dart';
 
 class StudentAddEditPage extends StatefulWidget {
   const StudentAddEditPage({Key? key, this.studentToEdit}) : super(key: key);
@@ -19,6 +20,7 @@ class _StudentAddEditPageState extends State<StudentAddEditPage> {
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
   final _repository = const StudentProvider();
+  String _selectedPhoto = "";
 
   @override
   void initState() {
@@ -27,6 +29,18 @@ class _StudentAddEditPageState extends State<StudentAddEditPage> {
         TextEditingController(text: widget.studentToEdit?.firstName ?? '');
     _lastNameController =
         TextEditingController(text: widget.studentToEdit?.lastName ?? '');
+    _selectedPhoto = widget.studentToEdit?.photo ?? "";
+  }
+
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _selectedPhoto = pickedFile.path;
+      });
+    }
   }
 
   @override
@@ -51,20 +65,36 @@ class _StudentAddEditPageState extends State<StudentAddEditPage> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
+              onPressed: _pickImage,
+              child: const Text('Pick Photo'),
+            ),
+            if (_selectedPhoto.isNotEmpty)
+              Image.file(
+                File(_selectedPhoto),
+                height: 100,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
+            const SizedBox(height: 16),
+            ElevatedButton(
               onPressed: () async {
                 if (widget.studentToEdit == null) {
                   final newStudent = Student(
                     firstName: _firstNameController.text,
                     lastName: _lastNameController.text,
+                    photo: _selectedPhoto,
                   );
                   await _repository.create(newStudent);
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).pop(newStudent);
                 } else {
                   final updatedStudent = widget.studentToEdit!.copyWith(
                     firstName: _firstNameController.text,
                     lastName: _lastNameController.text,
+                    photo: _selectedPhoto,
                   );
                   await _repository.update(updatedStudent.id!, updatedStudent);
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).pop(updatedStudent);
                 }
               },

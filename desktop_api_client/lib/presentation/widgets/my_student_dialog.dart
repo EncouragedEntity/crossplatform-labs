@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:web_client_api/data/providers/student_provider.dart';
 
@@ -24,7 +26,7 @@ class _MyStudentDialogState extends State<MyStudentDialog> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
         ),
-        constraints: const BoxConstraints.tightFor(width: 200, height: 150),
+        constraints: const BoxConstraints(maxWidth: 400, maxHeight: 300),
         child: FutureBuilder(
           future: _repository.getById(widget.id),
           builder: (context, AsyncSnapshot<Student?> snapshot) {
@@ -32,31 +34,44 @@ class _MyStudentDialogState extends State<MyStudentDialog> {
               if (snapshot.hasData) {
                 final Student student = snapshot.data!;
 
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                return Row(
                   children: [
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Student',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                    if (student.photo != null && student.photo!.isNotEmpty)
+                      SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Image.file(
+                          File(student.photo!),
+                          fit: BoxFit.contain,
                         ),
-                      ],
-                    ),
-                    Text('ID: ${student.id}'),
-                    Text('First name: ${student.firstName}'),
-                    Text('Last name: ${student.lastName}'),
-                    const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('OK'),
-                        )
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Student',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Text('ID: ${student.id}'),
+                        Text('First name: ${student.firstName}'),
+                        Text('Last name: ${student.lastName}'),
+                        const Spacer(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: const Text('OK'),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ],

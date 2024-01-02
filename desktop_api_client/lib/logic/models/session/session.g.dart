@@ -7,7 +7,7 @@ part of 'session.dart';
 // **************************************************************************
 
 Session _$SessionFromJson(Map<String, dynamic> json) => Session(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       studentId: json['studentId'] as int,
       subjectId: json['subjectId'] as int,
     );
