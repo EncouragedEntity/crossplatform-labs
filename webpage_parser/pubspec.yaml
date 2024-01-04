@@ -38,9 +38,7 @@ dependencies:
   html: ^0.15.4
   http: ^0.13.0
   logger: ^2.0.2+1
-  html_unescape: ^2.0.0
   windows1251: ^2.0.0
-  web_scraper: ^0.1.4
 
 dev_dependencies:
   flutter_test:
