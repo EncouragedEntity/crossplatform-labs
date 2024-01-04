@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      sha256: "706b5707578e0c1b4b7550f64078f0a0f19dec3f50a178ffae7006b0a9ca58fb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -83,30 +75,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  html:
-    dependency: "direct main"
-    description:
-      name: html
-      sha256: "3a7812d5bcd2894edf53dfaf8cd640876cf6cef50a8f238745c8b8120ea74d3a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.15.4"
-  http:
-    dependency: "direct main"
-    description:
-      name: http
-      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.13.6"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      sha256: "2aa08ce0341cc9b354a498388e30986515406668dbcc4f7c950c3e715496693b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
   lints:
     dependency: transitive
     description:
@@ -115,14 +83,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  logger:
-    dependency: "direct main"
-    description:
-      name: logger
-      sha256: "6bbb9d6f7056729537a4309bda2e74e18e5d9f14302489cc1e93f33b3fe32cac"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2+1"
   matcher:
     dependency: transitive
     description:
@@ -208,14 +168,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.1"
-  typed_data:
-    dependency: transitive
-    description:
-      name: typed_data
-      sha256: facc8d6582f16042dd49f2463ff1bd6e2c9ef9f3d5da3d9b087e244a7b564b3c
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.2"
   vector_math:
     dependency: transitive
     description:
@@ -232,13 +184,5 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.0"
-  windows1251:
-    dependency: "direct main"
-    description:
-      name: windows1251
-      sha256: dd636a296383fdde7f85a861961484b8249e4159a559240bf50cf913348aaa18
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
 sdks:
   dart: ">=3.2.3 <4.0.0"
