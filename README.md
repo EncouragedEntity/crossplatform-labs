@@ -5,7 +5,7 @@
 Лінки на кожну з лаб:
 - [Перша](json-api/)
 - [Друга](client_api/)
+- [Третя](webpage_parser/)
 - [Четверта](client_api/)
+- [П'ята](mobile_app/)
 - [Шоста](mobile_api_client/)
-
-Далі буде...
